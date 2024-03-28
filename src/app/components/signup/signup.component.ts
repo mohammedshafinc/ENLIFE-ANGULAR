@@ -12,7 +12,19 @@ export class SignupComponent {
 
   signupForm = this.fb.group({
     fullname : [''],
-    mobile: ['']
+    mobile: [''],
+    email:[''],
+    bloodGroup:[''],
+    password:[''],
+    confirmPassword:[''],
+    dob:[''],
+    houseName:[''],
+    city:[''],
+    lastd_date:[''],
+    district:[''],
+    state:[''],
+    pin:[''],
+    gender:['']
   })
 
 
