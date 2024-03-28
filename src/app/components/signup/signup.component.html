@@ -1,28 +1,37 @@
 <div class="max-w-4xl mx-auto font-[sans-serif] text-[#333] p-6">
     <div class="text-center mb-16">
-      <a href="javascript:void(0)"><img
-        src="https://readymadeui.com/readymadeui.svg" alt="logo" class='w-52 inline-block' />
-      </a>
+     
       <h4 class="text-base font-semibold mt-3">Sign up into your account</h4>
     </div>
-    <form>
+    <form [formGroup]="signupForm" (ngSubmit)="onsubmit()">
       <div class="grid sm:grid-cols-2 gap-y-7 gap-x-12">
         <div>
           <label class="text-sm mb-2 block">Full Name</label>
-          <input name="name" type="text" class="bg-gray-100 w-full text-sm px-4 py-3.5 rounded-md outline-blue-500" placeholder="Enter full name" />
+          <input name="name" type="text" formControlName="fullname" class="bg-gray-100 w-full text-sm px-4 py-3.5 rounded-md outline-blue-500" placeholder="Enter full name" />
         </div>
         <div>
           <label class="text-sm mb-2 block">Mobile No.</label>
-          <input name="lname" type="number" class="bg-gray-100 w-full text-sm px-4 py-3.5 rounded-md outline-blue-500" placeholder="Enter mobile no" />
+          <input name="lname" type="number" formControlName="mobile" class="bg-gray-100 w-full text-sm px-4 py-3.5 rounded-md outline-blue-500" placeholder="Enter mobile no" />
         </div>
         <div>
           <label class="text-sm mb-2 block">Email Id</label>
           <input name="email" type="text" class="bg-gray-100 w-full text-sm px-4 py-3.5 rounded-md outline-blue-500" placeholder="Enter email" />
         </div>
-        <div>
-          <label class="text-sm mb-2 block">Gender</label>
-          <input name="number" type="number" class="bg-gray-100 w-full text-sm px-4 py-3.5 rounded-md outline-blue-500" placeholder="select your gender" />
-        </div>
+        
+          <div>
+            <label class="text-sm mb-2 block">Blood Group</label>
+            <select name="bloodGroup" class="bg-gray-100 w-full text-sm px-4 py-3.5 rounded-md outline-blue-500">
+              <option value="">Select Blood Group</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option> 
+            </select>
+          </div>
         <div>
           <label class="text-sm mb-2 block">Password</label>
           <input name="password" type="password" class="bg-gray-100 w-full text-sm px-4 py-3.5 rounded-md outline-blue-500" placeholder="Enter password" />
@@ -44,6 +53,10 @@
             <input name="email" type="text" class="bg-gray-100 w-full text-sm px-4 py-3.5 rounded-md outline-blue-500" placeholder="Enter city" />
           </div>
           <div>
+            <label class="text-sm mb-2 block">Last Donated Date</label>
+            <input name="cpassword" type="date" class="bg-gray-100 w-full text-sm px-4 py-3.5 rounded-md outline-blue-500" placeholder="Enter Last donated date" />
+          </div>
+          <div>
             <label class="text-sm mb-2 block">District</label>
             <input name="number" type="number" class="bg-gray-100 w-full text-sm px-4 py-3.5 rounded-md outline-blue-500" placeholder="Enter district" />
           </div>
@@ -56,16 +69,25 @@
             <input name="cpassword" type="number" class="bg-gray-100 w-full text-sm px-4 py-3.5 rounded-md outline-blue-500" placeholder="Enter pin" />
           </div>
           <div>
-            <label class="text-sm mb-2 block">Blood Group</label>
-            <input name="password" type="password" class="bg-gray-100 w-full text-sm px-4 py-3.5 rounded-md outline-blue-500" placeholder="Enter blood group" />
+            <label class="text-sm mb-2 block">Gender</label>
+            <div class="flex items-center gap-3"> <div>
+                <input type="radio" id="male" name="gender" value="male" class="outline-blue-500"> 
+                <label for="male" class="text-sm">Male</label>
+              </div>
+              <div>
+                <input type="radio" id="female" name="gender" value="female" class="outline-blue-500">
+                <label for="female" class="text-sm">Female</label>
+              </div>
+              <div>
+                <input type="radio" id="other" name="gender" value="other" class="outline-blue-500">
+                <label for="other" class="text-sm">Other</label>
+              </div>
+            </div>
           </div>
-          <div>
-            <label class="text-sm mb-2 block">Last Donated Date</label>
-            <input name="cpassword" type="date" class="bg-gray-100 w-full text-sm px-4 py-3.5 rounded-md outline-blue-500" placeholder="Enter Last donated date" />
-          </div>
+        
       </div>
       <div class="!mt-10">
-        <button type="button" class="min-w-[150px] py-3 px-4 text-sm font-semibold rounded text-white bg-blue-500 hover:bg-blue-600 focus:outline-none">
+        <button type="submit" class="min-w-[150px] py-3 px-4 text-sm font-semibold rounded text-white bg-blue-500 hover:bg-blue-600 focus:outline-none">
           Sign up
         </button>
       </div>
