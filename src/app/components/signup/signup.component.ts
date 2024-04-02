@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,7 +9,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class SignupComponent {
 
-  constructor( private fb:FormBuilder){}
+  constructor( private fb:FormBuilder,private userService:UserService){}
 
   signupForm = this.fb.group({
     fullname : [''],
@@ -35,6 +36,15 @@ export class SignupComponent {
   onsubmit(){
       const values = this.signupForm.value
       console.log(values);
+      this.userService.userSignup(values).subscribe({
+        next:(data)=>{
+          console.log(data);
+          
+        },
+        error:(err)=>{
+          console.log(err);
+        }
+      })
       
   }
 
