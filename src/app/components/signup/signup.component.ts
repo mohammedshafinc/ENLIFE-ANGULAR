@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignupComponent  implements OnInit{
 
-  constructor( private fb:FormBuilder,private userService:UserService){}
+  constructor( private fb:FormBuilder,private userService:UserService,private route:Router){}
   errMsg = ''
   maxDate!:Date
   lastDonate!:String
@@ -69,6 +70,7 @@ calcuteMaxDate(){
       this.userService.userSignup(values).subscribe({
         next:(data)=>{
           console.log(data);
+          this.verifying()
           
         },
         error:(err)=>{
@@ -78,6 +80,13 @@ calcuteMaxDate(){
         }
       })
       
+  }
+
+
+
+  verifying(){
+    this.route.navigateByUrl('/verification')
+    console.log('move to otp[ ');
   }
 
 }
