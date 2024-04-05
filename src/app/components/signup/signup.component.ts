@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CommonService } from 'src/app/services/common.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignupComponent  implements OnInit{
 
-  constructor( private fb:FormBuilder,private userService:UserService,private route:Router){}
+  constructor( private fb:FormBuilder,private userService:UserService,private route:Router , private commonsrv:CommonService){}
   errMsg = ''
   maxDate!:Date
   lastDonate!:String

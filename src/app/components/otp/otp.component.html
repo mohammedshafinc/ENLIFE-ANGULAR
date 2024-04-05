@@ -3,22 +3,30 @@
         <h1 class="text-2xl font-bold mb-1">Mobile Phone Verification</h1>
         <p class="text-[15px] text-slate-500">Enter the 4-digit verification code that was sent to your phone number.</p>
     </header>
-    <form id="otp-form">
+    <form [formGroup]="otpForm" (ngSubmit)="otpSubmit()">
         <div class="flex items-center justify-center gap-3">
             <input
                 type="text"
+                formControlName="otp1"
+                (input)="autoInputChange($event)"
                 class="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                 pattern="\d*" maxlength="1" />
             <input
                 type="text"
+                formControlName="otp2"
+                (input)="autoInputChange($event)"
                 class="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                 maxlength="1" />
             <input
                 type="text"
+                formControlName="otp3"
+                (input)="autoInputChange($event)"
                 class="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                 maxlength="1" />
             <input
                 type="text"
+                formControlName="otp4"
+                (input)="autoInputChange($event)"
                 class="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                 maxlength="1" />
         </div>
