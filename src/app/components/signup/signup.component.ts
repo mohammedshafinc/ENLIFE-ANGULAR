@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 
@@ -7,9 +7,12 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent {
+export class SignupComponent  implements OnInit{
 
   constructor( private fb:FormBuilder,private userService:UserService){}
+  errMsg = ''
+  maxDate!:Date
+  lastDonate!:String
 
   signupForm = this.fb.group({
     fullname : [''],
@@ -29,7 +32,34 @@ export class SignupComponent {
   })
 
 
+ngOnInit(): void {
+  this.calcuteMaxDate()
 
+  // This prevents the user from selecting a future date or a date exceeding the current date in the "Last Donated Date" field.
+  const currentDate = new Date()
+  this.lastDonate = currentDate.toISOString().slice(0, 10) 
+    
+}
+
+
+
+// show date to ensure dob is greaterthan 18
+
+calcuteMaxDate(){
+  const today = new Date()
+  console.log(today);
+  const year = today.getFullYear()-18
+  const month = today.getMonth()
+  const day = today.getDate()
+  console.log(day);
+   this.maxDate = new Date(year, month, day)
+  
+  console.log(year);
+  
+  
+
+
+}
 
 
 
@@ -42,6 +72,8 @@ export class SignupComponent {
           
         },
         error:(err)=>{
+          this.errMsg = err.error.message
+          console.log(this.errMsg);
           console.log(err);
         }
       })
